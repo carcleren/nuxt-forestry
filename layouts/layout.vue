@@ -1,24 +1,32 @@
 <template>
-    <section class="layout">
-        <Header :is-info-page="isInfoPage" />
-        <div class="content">
-            <nuxt />
-        </div>
-    </section>
+  <section class="layout">
+    <Header :is-info-page="isInfoPage" />
+    <div class="content">
+      <nuxt />
+    </div>
+  </section>
 </template>
 
 <script>
-import Header from '~/components/Header.vue'
+import Header from '~/components/Header.vue';
 
-    export default {
-        components: {
-            Header
-        }, 
-        computed: {
-            isInfoPage() {
-                return this.$nuxt._route.name === "info" && true
-            }
-        },
+export default {
+  components: {
+    Header
+  },
+  computed: {
+    isInfoPage() {
+      return this.$nuxt._route.name === 'info' && true;
     }
+  },
+
+  head: {
+    script: [
+      {
+        src: 'https://identity.netlify.com/v1/netlify-identity-widget.js'
+      }
+    ]
+  }
+};
 </script>
 
